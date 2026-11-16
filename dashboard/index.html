@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="pulse" aria-hidden="true"></span><h1>TOKEN RADAR</h1><span class="tag">radar-2</span></div>
+  <p class="lede">Every pre-token protocol in the snapshot, ranked by what its token would be worth — and what to do to farm it before it launches.</p>
+  <div class="stats" id="stats" aria-label="Snapshot statistics"></div>
+</header>
+<main>
+  <section class="controls" aria-label="Board controls">
+    <label class="ctl">Search <input id="q" type="search" placeholder="Name or slug…" autocomplete="off"></label>
+    <label class="ctl">Category <select id="cat"><option value="">All categories</option></select></label>
+    <label class="ctl">Chain <select id="chain"><option value="">All chains</option></select></label>
+    <label class="ctl check"><input id="watch" type="checkbox"> Watchlist only</label>
+    <label class="ctl">Sort <select id="sort">
+      <option value="value">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="growth">7-day growth</option>
+      <option value="age">Age</option>
+    </select></label>
+  </section>
+  <p class="hint" id="count"></p>
+  <section class="board-wrap">
+    <table id="board">
+      <thead><tr>
+        <th data-k="rank">#</th><th data-k="name">Protocol</th><th data-k="tvl">TVL</th>
+        <th data-k="growth">7d</th><th data-k="age">Age</th><th data-k="value">Implied value</th><th>Watchlist</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+  <section id="detail" class="detail" aria-live="polite"></section>
+  <section class="model" aria-label="How the model works">
+    <h2>How the model works</h2>
+    <p id="formula"></p>
+    <p class="fine">Implied value is this entry's own claim, from the snapshot's figures alone — never a prediction that a token will launch, or when. A protocol that records no token may still have one its DefiLlama record does not carry.</p>
+  </section>
+  <section class="live" aria-label="Protocols whose token already trades">
+    <h2>Already launched — the market's own values</h2>
+    <p class="fine">These protocols already have a token that trades, so the board shows their market cap, not a model claim. They are set aside from the ranking.</p>
+    <table id="livetab">
+      <thead><tr><th>Protocol</th><th>TVL</th><th>Market cap</th><th>7d</th></tr></thead>
+      <tbody id="liverows"></tbody>
+    </table>
+  </section>
+</main>
+<footer><p id="src"></p></footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
